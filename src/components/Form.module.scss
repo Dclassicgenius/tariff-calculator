@@ -1,0 +1,106 @@
+.Form {
+  width: 800px;
+  margin: 0 auto;
+  .Heading {
+    margin: 30px 0px 20px 0px;
+    color: #000;
+    font-family: Inter;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.92px;
+  }
+}
+
+.Validation {
+  color: #86969c;
+  font-family: Inter;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+
+  &.Error {
+    color: #ff0000;
+  }
+}
+
+.Socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem;
+  border-radius: 45px 45px 15px 15px;
+  cursor: pointer;
+
+  &.On {
+    background: #fff;
+  }
+
+  span {
+    color: #000;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.72px;
+  }
+}
+
+.Button {
+  padding: 1rem 1.75rem;
+  background-color: #7a5cfa;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+
+  .Price {
+    font-family: Inter;
+    font-size: 1.825rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.92px;
+
+    span {
+      font-size: 1.25rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: -0.72px;
+    }
+  }
+
+  &.Button:hover {
+    background-color: #000;
+  }
+}
+
+.BlackText {
+  color: #000;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.96px;
+  margin-top: 20px;
+}
+
+.Wifi {
+  color: #000;
+  font-family: Inter;
+  font-size: 1.15rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.24px;
+
+  span {
+    font-weight: 700;
+  }
+}
