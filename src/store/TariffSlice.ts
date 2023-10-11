@@ -12,19 +12,21 @@ interface TariffConfiguratorState {
   additionalServicesCost: number;
   socials: Social[];
   socialsCost: number;
+  isPhoneNumberValid: boolean;
   totalCost: number;
 }
 
 const initialState: TariffConfiguratorState = {
   telephone: "",
   operator: "Оператор №1",
-  minutes: 200,
-  sms: 50,
+  minutes: 100,
+  sms: 0,
   internet: 5,
   additionalServices: [],
   additionalServicesCost: 0,
   socials: socials,
   socialsCost: 0,
+  isPhoneNumberValid: true,
   totalCost: 0,
 };
 
@@ -69,6 +71,10 @@ const tariffConfiguratorSlice = createSlice({
       state.socialsCost = action.payload;
     },
 
+    setIsPhoneNumberValid: (state, action: PayloadAction<boolean>) => {
+      state.isPhoneNumberValid = action.payload;
+    },
+
     setTotalCost: (state, action: PayloadAction<number>) => {
       state.totalCost = action.payload;
     },
@@ -85,6 +91,7 @@ export const {
   setSocials,
   setTotalCost,
   setAdditionalServicesCost,
+  setIsPhoneNumberValid,
   setSocialsCost,
 } = tariffConfiguratorSlice.actions;
 

@@ -6,8 +6,7 @@ type RangeSliderProps = {
   image: string;
   min: number;
   max: number;
-  step: number;
-  defaultValue: number;
+  step: number | null;
   type: string;
   trackColor: string;
   label: "Минуты" | "Интернет" | "Смс";
@@ -20,7 +19,6 @@ const RangeSlider = ({
   min,
   max,
   step,
-  defaultValue,
   type,
   trackColor,
   label,
@@ -36,7 +34,6 @@ const RangeSlider = ({
       <p className={styles.BlackText}>{label}</p>
       <Box sx={{ width: "100%", px: 2, my: 3.5 }}>
         <Slider
-          defaultValue={defaultValue}
           getAriaValueText={valuetext}
           min={min}
           max={max}

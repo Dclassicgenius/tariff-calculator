@@ -11,20 +11,20 @@ import tiktokOff from "./assets/tik-tok_disabled.svg";
 
 export const minuteMarks = [
   {
+    value: 100,
+    label: "100",
+  },
+  {
     value: 200,
     label: "200",
   },
   {
-    value: 350,
-    label: "350",
+    value: 300,
+    label: "300",
   },
   {
     value: 600,
     label: "600 мин.",
-  },
-  {
-    value: 650,
-    label: "650",
   },
 ];
 
@@ -34,16 +34,16 @@ export const internetMarks = [
     label: "5 ГБ",
   },
   {
+    value: 10,
+    label: "10",
+  },
+  {
     value: 15,
     label: "15",
   },
   {
-    value: 30,
-    label: "30",
-  },
-  {
-    value: 35,
-    label: "35",
+    value: 25,
+    label: "25",
   },
 ];
 

@@ -104,3 +104,32 @@
     font-weight: 700;
   }
 }
+
+.InputMask {
+  margin-top: 10px;
+  width: 197px;
+  padding: 0.7rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  border: 1px solid #b8c6cf;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.72px;
+  color: #000;
+  outline: #7a5cfa;
+
+  &:hover,
+  &:focus {
+    border: 1px solid #7a5cfa;
+  }
+
+  &.Error:focus {
+    border: 1px solid #ff0000;
+    outline: #ff0000;
+    background: url("../assets/ErrorIcon.svg") no-repeat right;
+    background-color: #fff;
+  }
+}

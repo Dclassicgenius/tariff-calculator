@@ -57,6 +57,10 @@ const Form = () => {
     (state: RootState) => state.tariffConfigurator.totalCost
   );
 
+  const isPhoneNumberValid = useSelector(
+    (state: RootState) => state.tariffConfigurator.isPhoneNumberValid
+  );
+
   const dispatch = useDispatch();
 
   const handleMinutesChange = (event: Event, newValue: number | number[]) => {
@@ -74,13 +78,13 @@ const Form = () => {
   useEffect(() => {
     let totalCost = 0;
 
-    if (minutes <= 100) {
+    if (minutes === 100) {
       totalCost += 10;
-    } else if (minutes <= 200) {
+    } else if (minutes === 200) {
       totalCost += 20;
-    } else if (minutes <= 300) {
+    } else if (minutes === 300) {
       totalCost += 30;
-    } else if (minutes <= 650) {
+    } else if (minutes === 600) {
       totalCost += 40;
     }
 
@@ -113,7 +117,9 @@ const Form = () => {
       totalCost,
     };
 
-    alert(JSON.stringify(tariff));
+    isPhoneNumberValid && telephone.length > 0
+      ? alert(JSON.stringify(tariff))
+      : alert("Phone number is not valid");
   };
 
   return (
@@ -124,40 +130,37 @@ const Form = () => {
 
       <RangeSlider
         min={100}
-        max={800}
-        step={50}
+        max={600}
+        step={null}
         label="Минуты"
         trackColor="#7A5CFA"
         image={purpleThumb}
         marks={minuteMarks}
-        defaultValue={200}
         type="мин."
         value={minutes}
         handleChange={handleMinutesChange}
       />
       <RangeSlider
         min={0}
-        max={250}
-        step={50}
+        max={150}
+        step={null}
         label="Смс"
         trackColor="#7A5CFA"
         image={purpleThumb}
         marks={smsMarks}
-        defaultValue={50}
         type=""
         value={sms}
         handleChange={handSmsChange}
       />
 
       <RangeSlider
-        min={0}
-        max={50}
-        step={5}
+        min={5}
+        max={25}
+        step={null}
         label="Интернет"
         trackColor="#000000"
         image={blackThumb}
         marks={internetMarks}
-        defaultValue={5}
         type="ГБ"
         value={internet}
         handleChange={handleInternetChange}

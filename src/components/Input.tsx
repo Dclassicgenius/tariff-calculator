@@ -1,14 +1,16 @@
-import { TextField, FormControl, MenuItem } from "@mui/material";
+import { FormControl, MenuItem } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import styles from "./Form.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { setTelephone, setOperator } from "../store/TariffSlice";
-import { useState } from "react";
+import {
+  setTelephone,
+  setOperator,
+  setIsPhoneNumberValid,
+} from "../store/TariffSlice";
+import { InputMask, InputMaskChangeEvent } from "primereact/inputmask";
 
 const Input = () => {
-  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(true);
-
   const telephone = useSelector(
     (state: RootState) => state.tariffConfigurator.telephone
   );
@@ -16,14 +18,15 @@ const Input = () => {
     (state: RootState) => state.tariffConfigurator.operator
   );
 
-  const dispatch = useDispatch();
+  const isPhoneNumberValid = useSelector(
+    (state: RootState) => state.tariffConfigurator.isPhoneNumberValid
+  );
 
-  const handlePhoneNumberChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const phoneNumber = event.target.value;
-    const phoneNumberPattern = /^[+\d]/;
-    setIsPhoneNumberValid(phoneNumberPattern.test(phoneNumber));
+  const dispatch = useDispatch();
+  const handlePhoneNumberChange = (event: InputMaskChangeEvent) => {
+    const phoneNumber = event.target.value ?? "";
+    const phoneNumberPattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+    dispatch(setIsPhoneNumberValid(phoneNumberPattern.test(phoneNumber)));
     dispatch(setTelephone(phoneNumber));
   };
 
@@ -35,27 +38,16 @@ const Input = () => {
     <>
       <div>
         <p className={styles.BlackText}>Телефон</p>
-        <TextField
-          id="outlined-basic"
+        <InputMask
+          className={`${styles.InputMask} ${
+            isPhoneNumberValid ? "" : styles.Error
+          }`}
+          mask="+7 (999) 999-99-99"
           placeholder="+7 (___) ___-__-__"
-          variant="outlined"
-          size="small"
-          sx={{ mt: 1, backgroundColor: "#FFF" }}
-          InputProps={{
-            sx: {
-              "&:hover fieldset": {
-                border: "1.5px solid #7A5CFA!important",
-                borderRadius: 1,
-              },
-              "&:focus-within fieldset, &:focus-visible fieldset": {
-                border: "1.5px solid #7A5CFA!important",
-              },
-            },
-          }}
           value={telephone}
           onChange={handlePhoneNumberChange}
-          error={!isPhoneNumberValid}
         />
+
         <p
           className={`${styles.Validation} ${
             isPhoneNumberValid ? "" : styles.Error
